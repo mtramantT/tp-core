@@ -1,5 +1,8 @@
 {
-  "name": "tp-core",
+  "name": "@mtramantt/tp-core",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/MtramantT"
+  },
   "version": "0.0.1",
   "description": "Core library for TramPortal projects",
   "main": "dist/index.js",
