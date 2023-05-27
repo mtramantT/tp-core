@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { defaultTheme } from "../../core";
 
 export interface ListGroupItemProps
   extends React.HTMLAttributes<HTMLLIElement> {
@@ -7,15 +8,15 @@ export interface ListGroupItemProps
   active?: boolean;
   dataIndex?: number;
 }
-
-interface StyleProps {
-  active?: boolean;
-}
-
-const Item = styled.li.attrs<{}>({ className: "list-group-item" })`
+const Item = styled.li.attrs((props) => {
+  return { className: props.className || "list-group-item" };
+})<{ active?: boolean }>`
   user-select: none;
   padding: 0.75rem 1rem;
-  ${({ active }: StyleProps) => (active ? "background-color: #007bff;" : "")}
+  ${({ theme, active }) => css`
+    background-color: ${active && theme.colors.primary};
+    color: ${active && theme.colors.white};
+  `}
   border: 1px solid rgba(0, 0, 0, 0.125);
 `;
 
@@ -24,6 +25,10 @@ const ListGroupItem: React.FC<ListGroupItemProps> = (
 ) => {
   const { active, dataIndex } = props;
   return <Item active={active} data-index={dataIndex} {...props} />;
+};
+
+Item.defaultProps = {
+  theme: defaultTheme,
 };
 
 export default ListGroupItem;

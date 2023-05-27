@@ -2,35 +2,34 @@ import React, { CSSProperties, ReactElement, useEffect, useRef } from "react";
 import styled, { css } from "styled-components";
 import { isListGroupItem } from "./ListGroupHelper";
 import { ListGroupItemProps } from "./ListGroupItem";
-
-import * as Theme from "@/core/Theme.json";
+import { defaultTheme } from "../../core";
 
 interface ListGroupProps extends React.HTMLAttributes<HTMLUListElement> {
   children: React.ReactNode | React.ReactNode[];
   showActive?: boolean;
   hover?: boolean;
-  theme?: string;
 }
 
-const List = styled.ul.attrs<{}>({ className: "list-group" })<{
-  hover?: boolean;
-}>`
+const List = styled.ul.attrs((props) => {
+  return { className: props.className || "list-group" };
+})<{ hover?: boolean }>`
   box-sizing: border-box;
   list-style: none;
   padding: 0;
   margin: 0;
-  background-color: rgb(187, 174, 157);
-  border-radius: 0.4rem;
-  color: #ddd;
+  ${({ theme, hover }) => css`
+    background-color: ${theme.colors.secondary};
+    color: ${theme.colors.black};
 
-  ${({ hover }) =>
-    hover &&
+    ${hover &&
     css`
       li:hover {
-        background-color: rgb(43, 71, 92);
-        color: #ddd;
+        background-color: ${theme.colors.accent};
+        color: ${theme.colors.white};
       }
     `}
+  `}
+  border-radius: 0.4rem;
 `;
 
 const ListGroup: React.FC<ListGroupProps> = (props: ListGroupProps) => {
@@ -100,10 +99,14 @@ const ListGroup: React.FC<ListGroupProps> = (props: ListGroupProps) => {
   };
 
   return (
-    <List {...props} hover={hover} onClick={handleClick}>
+    <List hover={hover} onClick={handleClick} {...props}>
       {listItems}
     </List>
   );
+};
+
+List.defaultProps = {
+  theme: defaultTheme,
 };
 
 export default ListGroup;
