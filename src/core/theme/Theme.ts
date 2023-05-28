@@ -12,6 +12,11 @@ export const defaultTheme = {
     }
 };
 
+const primary = {
+    bg: "#3D5467", // Charcoal
+    fg: "#FFFFFF", // White
+}
+
 type Colors = {
     primary: string;
     secondary: string;
@@ -24,3 +29,6 @@ type Colors = {
 export interface Theme {
     colors: Colors;
 }
+
+export type Themes = Theme[];
+export const themes: Themes = [defaultTheme];

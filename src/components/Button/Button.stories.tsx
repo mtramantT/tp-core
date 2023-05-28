@@ -16,13 +16,12 @@ type Story = StoryObj<typeof meta>;
 
 export const PrimaryButton: Story = {
   args: {
-    label: "Primary",
-    primary: true,
+    children: "Primary",
   },
 };
 
 export const SecondaryButton: Story = {
   args: {
-    label: "Secondary",
+    children: "Secondary",
   },
 };
