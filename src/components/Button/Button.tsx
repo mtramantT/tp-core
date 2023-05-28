@@ -1,6 +1,6 @@
+import defaultTheme from "@/core";
 import React from "react";
 import styled from "styled-components";
-import { defaultTheme } from "../../core";
 
 type ButtonColor = "primary" | "secondary" | "tertiary";
 
@@ -14,7 +14,7 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 
 const StyleWrapper = styled.button<{ color: ButtonColor }>`
   background-color: ${({ color, theme }) => theme.colors[color]};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ color, theme }) => theme.colors[color]};
 `;
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
