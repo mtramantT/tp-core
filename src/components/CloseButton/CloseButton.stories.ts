@@ -10,7 +10,7 @@ const meta: Meta<typeof CloseButton> = {
 
 type Story = StoryObj<typeof meta>;
 
-export const Button: Story = {
+export const CloseButtonStory: Story = {
     args: {},
 };
 
