@@ -1,0 +1,12 @@
+{
+    "primary": "#3D5467",
+    "secondary": "#F2F2F2",
+    "tertiary": "#F2F2F2",
+    "accent": "#F2F2F2",
+    "error": "#FF5252",
+    "info": "#2196F3",
+    "success": "#4CAF50",
+    "warning": "#FFC107",
+    "white": "#FFFFFF",
+    "black": "#000000"
+}

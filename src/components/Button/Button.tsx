@@ -1,4 +1,5 @@
-import defaultTheme from "@/core";
+import { defaultTheme } from "@/core";
+import { isColorPallette } from "@/core/theme/colors";
 import React from "react";
 import styled from "styled-components";
 
@@ -9,17 +10,17 @@ interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   // children?: string;
   // primary?: boolean;
   // backgroundColor?: string;
-  color?: ButtonColor;
+  schema?: ButtonColor;
 }
 
-const StyleWrapper = styled.button<{ color: ButtonColor }>`
-  background-color: ${({ color, theme }) => theme.colors[color]};
-  color: ${({ color, theme }) => theme.colors[color]};
+const StyleWrapper = styled.button<{ schema: ButtonColor }>`
+  background-color: ${({ schema, theme }) => theme.colorSchema[schema].default};
+  color: ${({ schema, theme }) => theme.colorSchema[schema].text};
 `;
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
-  const { color, ...buttonProps } = props;
-  return <StyleWrapper color="primary" {...buttonProps} />;
+  const { schema, ...buttonProps } = props;
+  return <StyleWrapper {...buttonProps} schema={schema || "primary"} />;
 };
 
 StyleWrapper.defaultProps = {

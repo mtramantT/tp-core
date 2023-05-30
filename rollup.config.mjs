@@ -2,6 +2,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
+import typescriptPaths from "rollup-plugin-typescript-paths";
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -19,6 +20,7 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
+      typescriptPaths(),
     ],
   },
   {
