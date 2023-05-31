@@ -35,7 +35,7 @@ export const isColorPallette = (colorPallette: any): colorPallette is ColorPalle
     );
 };
 
-
+// Defaults
 const DEFAULT_COLORS: {[key: string]: Color} = defaultColors as {[key: string]: Color};
 const getDefaultColorPallette = (color: Color, text?: Color): ColorPallette => {
     return text ? {
